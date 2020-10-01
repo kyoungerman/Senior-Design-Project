@@ -15,7 +15,8 @@ Here's how it worked:
 
      Then, it would aggregate all relevant product listings into a results page.
 
-     The application would also track 129 different PC parts and their prices, and store them in a remote database hosted on AWS.
+     The application would also track 129 different PC parts and their prices, 
+     and store them in a remote database hosted on AWS.
 
      Finally, the user could see the historical prices of any PC part in a line chart format.
 
