@@ -21,9 +21,9 @@ Here's how it worked:
      Finally, the user could see the historical prices of any PC part in a line chart format.
 
 
-files of interest:
+Files of interest:
 
-     WebApp-master/mysite/main/views.py hold a majority of the code that we wrote.
+     WebApp-master/mysite/main/views.py holds a majority of the code that we wrote. It's quite big.
   
      WebApp-master/mysite/main/models.py is where the database tables are defined.
 
