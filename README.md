@@ -3,17 +3,21 @@ hosting the database on AWS, web scraping, pulling data from the ebay API, and i
 front end.
 
 This project uses the following technologies:
+
 Python, Django, PostgreSQL, Amazon Web Services, Beautiful Soup, Chart.js and the eBay API. 
 
-First, a user would enter a term in the search bar of the webpage.
 
-The app would then search eBay, Craigslist, and Facebook Marketplace for the entered search term.
+Here's how it worked:
 
-Then, it would aggregate all relevant product listings into a results page.
+     First, a user would enter a term in the search bar of the webpage.
 
-The application would also track 129 different PC parts and their prices, and store them in a remote database hosted on AWS.
+     The app would then search eBay, Craigslist, and Facebook Marketplace for the entered search term.
 
-Finally, the user could see the historical prices of any PC part in a line chart format.
+     Then, it would aggregate all relevant product listings into a results page.
+
+     The application would also track 129 different PC parts and their prices, and store them in a remote database hosted on AWS.
+
+     Finally, the user could see the historical prices of any PC part in a line chart format.
 
 
 files of interest:
