@@ -12,4 +12,7 @@ The application would also track about 100 PC parts and their prices, and store 
 Finally, the user could see the historical prices of the PC parts in a line chart format.
 
 
+files of interest: WebApp-master/mysite/main/views.py hold a majority of the code that we wrote.
+                   WebApp-master/mysite/main/models.py is where the database tables are defined.
+
 Team: Me, Austin Tarango, Jordan Ruckle, and Jacob Silva.
