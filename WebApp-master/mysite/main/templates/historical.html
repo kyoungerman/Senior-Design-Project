@@ -1,0 +1,191 @@
+{% extends 'jordanBase.html' %}
+
+{% block content %}
+
+<h1 class="text-center">Historical Database</h1>
+<!-- <p>{{ cpu }} {{ graphics }}{{ hdd }} {{ ssd }} {{ ram }} {{ motherboard }} {{ aircooler }} {{ watercooler }} {{ powersupply }} </p> -->
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+  <!-- One "tab" for each step in the form: -->
+<div class="container">
+	<h1>Select a Computer Part:</h1>
+<form id="pickpart" action="" method="GET">
+
+	Part Type:
+	<div class="dropdown">
+		<select id="type" name="type" onclick="next(0)" onchange="next(0)" class="form-control" aria-labelledby="dropdownMenuButton">
+		  <option class="dropdown-item" onclick="next(0)" value="cpu">CPU</option>
+		  <option class="dropdown-item" onclick="next(0)" value="graphics">Graphics Card</option>
+		  <option class="dropdown-item" onclick="next(0)" value="hdd">HDD</option>
+		  <option class="dropdown-item" onclick="next(0)" value="ssd">SSD</option>
+		  <option class="dropdown-item" onclick="next(0)" value="ram">Ram</option>
+		  <option class="dropdown-item" onclick="next(0)" value="motherboard">Motherboard</option>
+		  <option class="dropdown-item" onclick="next(0)" value="aircooler">Air Cooler</option>
+		  <option class="dropdown-item" onclick="next(0)" value="watercooler">Water Cooler</option>
+		  <option class="dropdown-item" onclick="next(0)" value="powersupply">Powersupply</option>
+		</select>
+	</div>
+
+  Manufacturer:
+	<div class="dropdown">
+	<select id="manufacturer" name="manufacturer" onchange="next(1)" onclick="next(1)" class="form-control" aria-labelledby="dropdownMenuButton">
+	</select>
+</div>
+
+  Model:
+	<div class="dropdown">
+	<select id="model" name="model" class="form-control" aria-labelledby="dropdownMenuButton">
+	</select>
+
+  </div>
+  <br>
+</form>
+	<button class="btn" onclick="next(2)">Submit</button>
+</div>
+
+
+<script type="text/javascript">
+cpu = {{ cpu|safe }};
+
+graphics = {{ graphics|safe }};
+hdd = {{ hdd|safe }};
+ssd = {{ ssd|safe }};
+ram = {{ ram|safe }};
+motherboard = {{ motherboard|safe }};
+aircooler = {{ aircooler|safe }};
+watercooler = {{ watercooler|safe }};
+powersupply = {{ powersupply|safe }};
+values = {{ values|safe }}
+var manufacturersKeys = []
+var partType = {}
+function next(opt) {
+	if (0 === opt) {
+		var x = document.getElementById("type").value;
+		var items;
+		switch (x) {
+			case 'cpu':
+				items = Object.keys(cpu);
+				partType = cpu;
+				break;
+			case 'graphics':
+				items = Object.keys(graphics);
+				partType = graphics;
+				break;
+			case 'hdd':
+				items = Object.keys(hdd);
+				partType = hdd;
+				break;
+			case 'ssd':
+				items = Object.keys(ssd);
+				partType = ssd;
+				break;
+			case 'ram':
+				items = Object.keys(ram);
+				partType = ram;
+				break;
+			case 'motherboard':
+				items = Object.keys(motherboard);
+				partType = motherboard;
+				break;
+			case 'aircooler':
+				items = Object.keys(aircooler);
+				partType = aircooler;
+				break;
+			case 'watercooler':
+				items = Object.keys(watercooler);
+				partType = watercooler;
+				break;
+			case 'powersupply':
+				items = Object.keys(powersupply);
+				partType = powersupply;
+				break;
+			}
+		var str = ""
+		for (var item of items) {
+			str += "<option class=\"dropdown-item\" onclick=\"next(1)\" value=\"" + item + "\">" + item + "</option>"
+		}
+		manufacturersKeys = items
+		document.getElementById("manufacturer").innerHTML = str;
+		document.getElementById("model").innerHTML = "";
+	} else if (1 === opt) {
+		var x = document.getElementById("manufacturer").value;
+		
+		var models = partType[x];
+
+		var str = ""
+		for (var model of models) {
+			str += "<option class=\"dropdown-item\" value=\"" + model + "\">" + model + "</option>"
+		}
+
+		document.getElementById("model").innerHTML = str;
+	} else if (2 >= opt) {
+		value = document.getElementById('model').value.toString()
+		
+		if (value) {
+			document.getElementById("pickpart").submit(); 
+		}
+	}
+}
+
+</script>
+<canvas id="historicalChart"></canvas>
+<script>
+    var item = "{{ model }}"
+    var ctx = document.getElementById('historicalChart').getContext('2d');
+    var today = new Date();
+    var week = [];
+    for (i=0; i<7; i++) {
+        var day = new Date(today);
+        day.setDate(day.getDate() - i);
+        week[6-i] = (day.toDateString());
+    }
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+
+        // The data for our dataset
+        data: {
+            labels: week,
+            datasets: [{
+                label: 'Data set for: ' + item,
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: values
+            }]
+        },
+
+        options: {
+				responsive: true,
+				title: {
+					display: true,
+					text: 'Past week prices for: ' + item
+				},
+				tooltips: {
+					mode: 'index',
+					intersect: false,
+				},
+				hover: {
+					mode: 'nearest',
+					intersect: true
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Day'
+						}
+					}],
+					yAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Price ($)'
+						}
+					}]
+				}
+			}
+    });
+</script>
+
+{% endblock %}

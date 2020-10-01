@@ -1,0 +1,27 @@
+{% extends 'jordanBase.html' %}
+
+
+{% block content %}
+
+<section class="searchFunctionality">
+  <h1 class="text-center">PC Chop Shop</h1><br>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6">
+        <div class="searchbar">
+          <form class="search_form" action= "search" method="get" id="form">
+            <input class="search_input" name="q" type="text" placeholder="Search...">
+            <a href="#" class="search_icon" onclick="document.getElementById('form').submit()"><i class="fas fa-search"></i></a>
+            <input class="search_input" name="fbl" type="text" placeholder="Enter facebook location">
+            <noscript>
+              <input type="submit" value="Submit form!" />
+            </noscript>
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-3"></div>
+    </div>
+  </div>
+</section>
+{% endblock %}

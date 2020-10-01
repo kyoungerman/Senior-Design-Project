@@ -1,0 +1,10 @@
+This file is for logging any possible improvements/bugs/issues we know about.
+
+1. The Database accepts duplicate entries. Could probably wait to fix this after we stop using sqlite3
+
+2. Need an easy way to switch between searching ebay/craigslist/both. This is going to require adding a checkbox,
+drop down, or something else on the front end. Then, we can hook it up to the back end quite easily.
+
+3. the results display is just a list that lists all the fields in the format:
+    website, title, price, url, partID. It looks quite messy. search_results.html controls this format right now.
+

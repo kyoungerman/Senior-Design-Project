@@ -1,0 +1,75 @@
+{% extends 'jordanBase.html' %}
+
+{% block content %}
+
+<section class="searchFunctionality">
+  <h1 class="text-center">Search Results</h1><br>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6">
+        <div class="searchbar">
+          <form class="search_form" action="search" method="get" id="form">
+            <input class="search_input" name="q" type="text" placeholder="Search...">
+            <a href="#" class="search_icon" onclick="document.getElementById('form').submit()"><i class="fas fa-search"></i></a>
+            <input class="search_input" name="fbl" type="text" placeholder="Enter facebook location">
+            <noscript>
+              <input type="submit" value="Submit form!" />
+            </noscript>
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-3"></div>
+    </div>
+  </div>
+</section>
+
+<section class="partList">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2>There are {{ object_list.count }} items currently in the database</h2>
+        <br>
+        <table id="partsTable" class="table table-striped custab">
+          <thead>
+            <tr>
+              <th>Part Listing Website</th>
+              <th>Part Title</th>
+              <th>Part Price</th>
+              <th>Part URL</th>
+              <th>Part ID</th>
+              <th>Button</th>
+              <th>Part Picture</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for part in object_list %}
+            <tr>
+              <td>{{ part.website }}</td>
+              <td>{{ part.title }}</td>
+              <td>{{ part.price }}</td>
+              <td>{{ part.url }}</td>
+              <td>{{ part.partID }}</td>
+              <td class="text-center"><a target="_blank" class='btn btn-info btn-xs' href="{{ part.url }}"><span class="glyphicon glyphicon-edit"></span> See Listing</a></td>
+              <td class="text-center"><img src="{{ part.pictureUrl }}"></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <br><br><br><br><br>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+{% endblock %}

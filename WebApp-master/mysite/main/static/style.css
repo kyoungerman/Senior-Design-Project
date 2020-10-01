@@ -1,0 +1,72 @@
+body,html{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #add8e6  !important;
+}
+
+.navbar {
+  margin-bottom: 50px;
+}
+
+.searchbar{
+  margin-bottom: auto;
+  margin-top: auto;
+  height: 60px;
+  background-color: #353b48;
+  border-radius: 30px;
+  padding: 10px;
+}
+
+.search_input{
+  padding: 0 10px;
+  color: white;
+  border: 0;
+  outline: 0;
+  background: none;
+  width: 450px;
+  caret-color:white;
+  line-height: 40px;
+  transition: width 0.4s linear;
+}
+
+.search_form:hover > .search_icon{
+  background: white;
+  color: #add8e6;
+  text-decoration: none;
+}
+
+.search_icon{
+  height: 40px;
+  width: 40px;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color:white;
+}
+
+.partList {
+  padding-top: 20px;
+  padding-bottom: 100px;
+}
+
+.custab{
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin: 5% 0;
+  box-shadow: 3px 3px 2px #ccc;
+  transition: 0.5s;
+}
+.custab:hover{
+  box-shadow: 3px 3px 0px transparent;
+  transition: 0.5s;
+}
+.custab tbody tr {
+  padding-bottom: 100px;
+}
+.custab tbody tr:nth-child(odd) {
+  background-color: #ADD8E6;
+}
