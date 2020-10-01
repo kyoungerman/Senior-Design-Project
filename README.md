@@ -13,10 +13,10 @@ Here's how it worked:
 
      The app would then search eBay, Craigslist, and Facebook Marketplace for the entered search term.
 
-     Then, it would aggregate all relevant product listings into a results page.
+     Then, it would aggregate all relevant product listings and display a results page.
 
-     The application would also track 129 different PC parts and their prices, 
-     and store them in a remote database hosted on AWS.
+     The application would also track 129 different PC parts and their daily prices,
+     and store price history in a remote database
 
      Finally, the user could see the historical prices of any PC part in a line chart format.
 
